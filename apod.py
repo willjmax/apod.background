@@ -1,5 +1,6 @@
-import urllib2
+import argparse
 import subprocess
+import urllib2
 from HTMLParser import HTMLParser
 
 url = "http://apod.nasa.gov/apod/astropix.html"
@@ -26,5 +27,5 @@ with open('img.jpg', 'w') as fh:
 
 pwd = subprocess.check_output('pwd')
 command = 'gsettings set org.gnome.desktop.background picture-uri file://' + pwd.rstrip('\r\n') + '/img.jpg'
-print command
-subprocess.check_call(command, shell=True);
+subprocess.check_call(command, shell=True)
+	
