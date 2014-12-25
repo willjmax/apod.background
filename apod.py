@@ -8,12 +8,14 @@ response = urllib2.urlopen(url)
 html = response.read()
 
 class MyHTMLParser(HTMLParser):
+	output = ""
 	def handle_starttag(self, tag, attrs):
 		if tag == "a":
 			for name, value in attrs:
 				if name == "href":
 					if value[len(value)-3:len(value)] == "jpg":
-						self.output = value
+						if self.output == "":
+							self.output = value
 
 parser = MyHTMLParser()
 parser.feed(html)
